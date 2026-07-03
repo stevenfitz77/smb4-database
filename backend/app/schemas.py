@@ -54,6 +54,7 @@ class TeamBase(BaseModel):
     name: str
     city: Optional[str] = None
     abbreviation: str
+    stadium_name: str
     logo_url: Optional[str] = None
 
     @field_validator("abbreviation")
