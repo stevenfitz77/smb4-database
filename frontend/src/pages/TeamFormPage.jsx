@@ -40,7 +40,7 @@ function TeamFormPage() {
     const payload = {
       name: formData.name,
       city: formData.city || null,
-      abbreviation: formData.abbreviation,
+      abbreviation: formData.abbreviation || null,
       stadium_name: formData.stadium_name,
       logo_url: formData.logo_url || null,
     };
@@ -91,7 +91,7 @@ function TeamFormPage() {
         <div className="form-row">
           <label>
             Abbreviation
-            <input name="abbreviation" value={formData.abbreviation} onChange={handleChange} maxLength={5} required />
+            <input name="abbreviation" value={formData.abbreviation} onChange={handleChange} maxLength={5} />
           </label>
           <label>
             Stadium Name

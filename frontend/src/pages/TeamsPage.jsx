@@ -31,7 +31,7 @@ function TeamsPage() {
               {team.logo_url ? (
                 <img src={team.logo_url} alt={team.name} />
               ) : (
-                <div className="team-card-placeholder">{team.abbreviation}</div>
+                <div className="team-card-placeholder">{team.name}</div>
               )}
             </div>
             <div className="team-card-info">

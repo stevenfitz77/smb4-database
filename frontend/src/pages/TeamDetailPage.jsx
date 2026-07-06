@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getTeam, getPlayers, deleteTeam } from '../api/client';
 import PlayerCard from '../components/PlayerCard';
+import PlayersTable from '../components/PlayersTable';
 import './TeamDetailPage.css';
 
 function TeamDetailPage() {
@@ -63,7 +64,7 @@ function TeamDetailPage() {
         {team.logo_url ? (
           <img src={team.logo_url} alt={team.name} className="team-header-logo" />
         ) : (
-          <div className="team-header-placeholder">{team.abbreviation}</div>
+          <div className="team-header-placeholder">{team.name}</div>
         )}
         <div>
           <h1>{team.city ? `${team.city} ` : ''}{team.name}</h1>
@@ -77,11 +78,16 @@ function TeamDetailPage() {
       {players.length === 0 ? (
         <p>No players on this team yet.</p>
       ) : (
+        
+        <PlayersTable players={players} />
+        
+        /* Player Grid instead of Player Table
         <div className="player-grid">
           {players.map((player) => (
             <PlayerCard key={player.id} player={player} />
           ))}
         </div>
+        */
       )}
     </div>
   );

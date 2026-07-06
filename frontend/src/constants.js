@@ -37,3 +37,17 @@ export const TRAIT_CHEMISTRY = {
   "POW vs RHP": "Spirited", "Rally Starter": "Spirited", "RBI Hero": "Spirited",
   "RBI Zero": "Spirited",
 };
+
+// Ordered worst-to-best, used for both validation and sort order
+export const RATINGS = [
+  "D-", "D", "D+",
+  "C-", "C", "C+",
+  "B-", "B", "B+",
+  "A-", "A", "A+",
+  "S"
+];
+
+export const THROW_HANDS = ["R", "L"];
+export const BAT_HANDS = ["R", "L", "S"];
+
+export const TWO_WAY_TRAITS = new Set(["Two Way (C)", "Two Way (IF)", "Two Way (OF)"]);

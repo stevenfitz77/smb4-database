@@ -7,7 +7,7 @@ class Team(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     city = Column(String, nullable=True)
-    abbreviation = Column(String, nullable=False)
+    abbreviation = Column(String, nullable=True)
     stadium_name = Column(String, nullable=True)
     logo_url = Column(String, nullable=True)
     players = relationship("Player", back_populates="team")
@@ -18,8 +18,12 @@ class Player(Base):
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
     jersey_number = Column(Integer, nullable=True)
+    throw_hand = Column(String, nullable=False)
+    bat_hand = Column(String, nullable=False)
+    age = Column(Integer, nullable=False)
     card_photo_url = Column(String, nullable=True)
     traits = Column(JSON, nullable=True)      # list of trait names
+    rating = Column(String, nullable=False)
     team_id = Column(Integer, ForeignKey("teams.id"), nullable=True)  # nullable = free agents allowed
     team = relationship("Team", back_populates="players")
 

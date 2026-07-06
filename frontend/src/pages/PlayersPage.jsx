@@ -1,12 +1,20 @@
 import { useState, useEffect } from 'react';
 import { getPlayers } from '../api/client';
+import BattersTable from '../components/BattersTable';
+import PitchersTable from '../components/PitchersTable';
+import { POSITIONS, CHEMISTRY_TYPES, RATINGS, PITCHER_POSITIONS, TWO_WAY_TRAITS } from '../constants';
 import { Link } from 'react-router-dom';
-import PlayerCard from '../components/PlayerCard';
 import './PlayersPage.css';
 
 function PlayersPage() {
   const [players, setPlayers] = useState([]);
+  const [view, setView] = useState('batters');
   const [search, setSearch] = useState('');
+  const [position, setPosition] = useState('');
+  const [chemistryType, setChemistryType] = useState('');
+  const [rating, setRating] = useState('');
+  const [sortBy, setSortBy] = useState('');
+  const [order, setOrder] = useState('asc');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -14,43 +22,99 @@ function PlayersPage() {
     setLoading(true);
     setError(null);
 
-    // debounce: wait 300ms after typing stops before calling the API
     const timeoutId = setTimeout(() => {
-      getPlayers(search ? { search } : {})
-        .then((data) => setPlayers(data))
-        .catch((err) => setError('Failed to load players.'))
+      const params = {};
+      if (search) params.search = search;
+      if (position) params.position = position;
+      if (chemistryType) params.chemistry_type = chemistryType;
+      if (rating) params.rating = rating;
+      if (sortBy && sortBy !== 'rating') {
+        params.sort_by = sortBy;
+        params.order = order;
+      }
+
+      getPlayers(params)
+        .then((data) => {
+          if (sortBy === 'rating') {
+            const sorted = [...data].sort((a, b) => {
+              const diff = RATINGS.indexOf(a.rating) - RATINGS.indexOf(b.rating);
+              return order === 'desc' ? -diff : diff;
+            });
+            setPlayers(sorted);
+          } else {
+            setPlayers(data);
+          }
+        })
+        .catch(() => setError('Failed to load players.'))
         .finally(() => setLoading(false));
     }, 300);
 
     return () => clearTimeout(timeoutId);
-  }, [search]);
+  }, [search, position, chemistryType, rating, sortBy, order]);
+
+  const handleSort = (field) => {
+    if (sortBy === field) {
+      setOrder(order === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortBy(field);
+      setOrder('asc');
+    }
+  };
+
+  const isPitcher = (p) => PITCHER_POSITIONS.has(p.primary_position);
+  const isTwoWay = (p) => p.traits?.some((t) => TWO_WAY_TRAITS.has(t));
+
+  const displayedPlayers = players.filter((p) =>
+    view === 'pitchers' ? isPitcher(p) : (!isPitcher(p) || isTwoWay(p))
+  );
 
   return (
     <div className="players-page">
-      <h1>Players</h1>
+      <div className="players-page-header">
+        <h1>Players</h1>
+        <Link to="/admin/players/new" className="temp-admin-button">+ New Player (TEMP)</Link>
+      </div>
 
-      <Link to="/admin/players/new" className="temp-admin-button">+ New Player (TEMP)</Link>
+      <div className="view-toggle">
+        <button className={view === 'batters' ? 'active' : ''} onClick={() => setView('batters')}>
+          Batters
+        </button>
+        <button className={view === 'pitchers' ? 'active' : ''} onClick={() => setView('pitchers')}>
+          Pitchers
+        </button>
+      </div>
 
-      <input
-        type="text"
-        placeholder="Search by first or last name..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        className="search-input"
-      />
+      <div className="filters-bar">
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="search-input"
+        />
+        <select value={position} onChange={(e) => setPosition(e.target.value)}>
+          <option value="">All Positions</option>
+          {POSITIONS.map((p) => <option key={p} value={p}>{p}</option>)}
+        </select>
+        <select value={chemistryType} onChange={(e) => setChemistryType(e.target.value)}>
+          <option value="">All Chemistry</option>
+          {CHEMISTRY_TYPES.map((c) => <option key={c} value={c}>{c}</option>)}
+        </select>
+        <select value={rating} onChange={(e) => setRating(e.target.value)}>
+          <option value="">All Ratings</option>
+          {RATINGS.map((r) => <option key={r} value={r}>{r}</option>)}
+        </select>
+      </div>
 
       {loading && <p>Loading players...</p>}
       {error && <p className="error-text">{error}</p>}
+      {!loading && !error && displayedPlayers.length === 0 && <p>No players found.</p>}
 
-      {!loading && !error && players.length === 0 && (
-        <p>No players found.</p>
+      {!loading && !error && displayedPlayers.length > 0 && (
+        view === 'pitchers'
+          ? <PitchersTable players={displayedPlayers} sortBy={sortBy} order={order} onSort={handleSort} />
+          : <BattersTable players={displayedPlayers} sortBy={sortBy} order={order} onSort={handleSort} />
       )}
-
-      <div className="player-grid">
-        {players.map((player) => (
-          <PlayerCard key={player.id} player={player} />
-        ))}
-      </div>
     </div>
   );
 }

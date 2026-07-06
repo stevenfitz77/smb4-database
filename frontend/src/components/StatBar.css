@@ -1,0 +1,41 @@
+.stat-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-bar-label {
+  width: 70px;
+  font-size: 0.85rem;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.stat-bar-track {
+  position: relative;
+  flex: 1;
+  height: 22px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  transition: width 0.2s ease;
+}
+
+.stat-bar-number {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 0 2px rgba(0,0,0,0.5);
+}

@@ -47,19 +47,25 @@ TRAIT_CHEMISTRY = {
     "RBI Zero": "Spirited",
 }
 
+VALID_RATINGS = ["D-", "D", "D+", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+", "S"]
+
+VALID_THROW_HANDS = {"R", "L"}
+VALID_BAT_HANDS = {"R", "L", "S"}
 
 # ---------- Team ----------
 
 class TeamBase(BaseModel):
     name: str
     city: Optional[str] = None
-    abbreviation: str
+    abbreviation: Optional[str] = None
     stadium_name: str
     logo_url: Optional[str] = None
 
     @field_validator("abbreviation")
     @classmethod
     def abbreviation_format(cls, value):
+        if value is None:
+            return value
         if not (2 <= len(value) <= 4):
             raise ValueError("Abbreviation must be between 2 and 4 characters")
         return value.upper()
@@ -80,8 +86,12 @@ class PlayerBase(BaseModel):
     first_name: str
     last_name: str
     jersey_number: Optional[int] = None
+    throw_hand: str
+    bat_hand: str
+    age: int
     card_photo_url: Optional[str] = None
     traits: Optional[List[str]] = None
+    rating: str
     team_id: Optional[int] = None
 
     primary_position: str
@@ -158,6 +168,34 @@ class PlayerBase(BaseModel):
                 raise ValueError(f"Invalid trait: {trait}")
         return value
     
+    @field_validator("rating")
+    @classmethod
+    def validate_rating(cls, value):
+        if value not in VALID_RATINGS:
+            raise ValueError(f"Invalid rating: {value}. Valid ratings: {VALID_RATINGS}")
+        return value
+    
+    @field_validator("throw_hand")
+    @classmethod
+    def valid_throw_hand(cls, value):
+        if value not in VALID_THROW_HANDS:
+            raise ValueError(f"Valid throwing handedness: {VALID_THROW_HANDS}")
+        return value
+    
+    @field_validator("bat_hand")
+    @classmethod
+    def valid_bat_hand(cls, value):
+        if value not in VALID_BAT_HANDS:
+            raise ValueError(f"Valid batting handedness: {VALID_BAT_HANDS}")
+        return value
+    
+    @field_validator("age")
+    @classmethod
+    def valid_age(cls, value):
+        if not (18 <= value <= 49):
+            raise ValueError("age must be between 18 and 49")
+        return value
+    
     # ---- Model Validators: pitcher vs position player ----
     @model_validator(mode="after")
     def check_role_specific_fields(self):
@@ -170,6 +208,8 @@ class PlayerBase(BaseModel):
                 raise ValueError(f"Pitchers must have the following fields: {missing}")
             if self.arm is not None:
                 raise ValueError("Pitchers should not have an 'arm' stat")
+            if self.secondary_positions:
+                raise ValueError("Pitchers use the Two-Way trait for secondary positions")
         else:
             if self.arm is None:
                 raise ValueError("Position players must have an 'arm' stat")

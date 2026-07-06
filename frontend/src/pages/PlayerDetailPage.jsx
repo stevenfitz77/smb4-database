@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getPlayer, deletePlayer } from '../api/client';
 import { PITCHER_POSITIONS } from '../constants';
 import './PlayerDetailPage.css';
+import { getStatColor } from '../utils/statColor';
 
 function PlayerDetailPage() {
   const { playerId } = useParams();
@@ -80,6 +81,7 @@ function PlayerDetailPage() {
           </p>
 
           <p><strong>Chemistry:</strong> {player.chemistry_type}</p>
+          <p><strong>Rating:</strong> {player.rating}</p>
         </div>
       </div>
 

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPlayer, createPlayer, updatePlayer, getTeams } from '../api/client';
-import { POSITIONS, PITCHER_POSITIONS, CHEMISTRY_TYPES, PITCH_TYPES, TRAIT_CHEMISTRY } from '../constants';
+import { POSITIONS, PITCHER_POSITIONS, CHEMISTRY_TYPES, PITCH_TYPES, TRAIT_CHEMISTRY, RATINGS, THROW_HANDS, BAT_HANDS } from '../constants';
 import './PlayerFormPage.css';
 
 const emptyForm = {
   first_name: '', last_name: '', jersey_number: '', card_photo_url: '',
-  team_id: '', primary_position: '', secondary_positions: [], chemistry_type: '',
+  team_id: '', primary_position: '', secondary_positions: [], chemistry_type: '', rating: '',
   traits: [], power: '', contact: '', speed: '', fielding: '', arm: '',
-  velocity: '', junk: '', accuracy: '', pitch_arsenal: [],
+  velocity: '', junk: '', accuracy: '', pitch_arsenal: [], age: '', throw_hand: '', bat_hand: ''
 };
 
 function PlayerFormPage() {
@@ -33,12 +33,16 @@ function PlayerFormPage() {
         first_name: player.first_name ?? '',
         last_name: player.last_name ?? '',
         jersey_number: player.jersey_number ?? '',
+        age: player.age ?? '',
+        throw_hand: player.throw_hand ?? '',
+        bat_hand: player.bat_hand ?? '',
         card_photo_url: player.card_photo_url ?? '',
         team_id: player.team_id ?? '',
         primary_position: player.primary_position ?? '',
         secondary_positions: player.secondary_positions ?? [],
         chemistry_type: player.chemistry_type ?? '',
         traits: player.traits ?? [],
+        rating: player.rating ?? '',
         power: player.power ?? '', contact: player.contact ?? '',
         speed: player.speed ?? '', fielding: player.fielding ?? '',
         arm: player.arm ?? '', velocity: player.velocity ?? '',
@@ -77,12 +81,16 @@ function PlayerFormPage() {
       first_name: formData.first_name,
       last_name: formData.last_name,
       jersey_number: toInt(formData.jersey_number),
+      age: toInt(formData.age),
+      throw_hand: formData.throw_hand,
+      bat_hand: formData.bat_hand,
       card_photo_url: formData.card_photo_url || null,
       team_id: toInt(formData.team_id),
       primary_position: formData.primary_position,
-      secondary_positions: formData.secondary_positions.length ? formData.secondary_positions : null,
+      secondary_positions: isPitcher ? null : (formData.secondary_positions.length ? formData.secondary_positions : null),
       chemistry_type: formData.chemistry_type,
       traits: formData.traits.length ? formData.traits : null,
+      rating: formData.rating,
       power: toInt(formData.power),
       contact: toInt(formData.contact),
       speed: toInt(formData.speed),
@@ -143,6 +151,24 @@ function PlayerFormPage() {
             <input type="number" name="jersey_number" value={formData.jersey_number} onChange={handleChange} />
           </label>
           <label>
+            Age
+            <input type="number" min="18" max="49" name="age" value={formData.age} onChange={handleChange} required />
+          </label>
+          <label>
+            Bats
+            <select name="bat_hand" value={formData.bat_hand} onChange={handleChange} required>
+              <option value="">Select...</option>
+              {BAT_HANDS.map((h) => <option key={h} value={h}>{h}</option>)}
+            </select>
+          </label>
+          <label>
+            Throws
+            <select name="throw_hand" value={formData.throw_hand} onChange={handleChange} required>
+              <option value="">Select...</option>
+              {THROW_HANDS.map((h) => <option key={h} value={h}>{h}</option>)}
+            </select>
+          </label>
+          <label>
             Card Photo URL
             <input name="card_photo_url" value={formData.card_photo_url} onChange={handleChange} placeholder="/player-cards/lastname-firstname.png" />
           </label>
@@ -173,12 +199,20 @@ function PlayerFormPage() {
               {CHEMISTRY_TYPES.map((c) => <option key={c} value={c}>{c}</option>)}
             </select>
           </label>
+          <label>
+            Rating
+            <select name="rating" value={formData.rating} onChange={handleChange} required>
+              <option value="">Select...</option>
+              {RATINGS.map((r) => <option key={r} value={r}>{r}</option>)}
+            </select>
+          </label>
         </div>
 
-        <fieldset>
-          <legend>Secondary Positions (up to 2)</legend>
-          <div className="checkbox-grid">
-            {POSITIONS.map((p) => (
+        {!isPitcher && (
+          <fieldset>
+            <legend>Secondary Positions (up to 2)</legend>
+            <div className="checkbox-grid">
+              {POSITIONS.map((p) => (
               <label key={p} className="checkbox-label">
                 <input
                   type="checkbox"
@@ -190,7 +224,7 @@ function PlayerFormPage() {
             ))}
           </div>
         </fieldset>
-
+        )}
         <h2>Stats (0-99)</h2>
         <div className="form-row stat-row">
           <label>Power <input type="number" min="0" max="99" name="power" value={formData.power} onChange={handleChange} /></label>

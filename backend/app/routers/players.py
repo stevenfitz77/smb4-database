@@ -1,10 +1,26 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy import or_
+from sqlalchemy import or_, asc, desc
 from typing import List, Optional
 
 from .. import models, schemas
 from ..database import get_db
+
+SORTABLE_FIELDS = {
+    "first_name": models.Player.first_name,
+    "last_name": models.Player.last_name,
+    "jersey_number": models.Player.jersey_number,
+    "age": models.Player.age,
+    "power": models.Player.power,
+    "contact": models.Player.contact,
+    "speed": models.Player.speed,
+    "fielding": models.Player.fielding,
+    "velocity": models.Player.velocity,
+    "junk": models.Player.junk,
+    "accuracy": models.Player.accuracy,
+    # rating is not included here because SQL would try to sort it alphabetically.
+    # rating sort will be handled in the frontend using RATINGS array
+}
 
 router = APIRouter(
     prefix="/players",
@@ -12,7 +28,16 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=List[schemas.Player])
-def get_players(team_id: Optional[int] = None, search: Optional[str] = None,db: Session = Depends(get_db)):
+def get_players(
+    team_id: Optional[int] = None,
+    search: Optional[str] = None,
+    position: Optional[str] = None,
+    chemistry_type: Optional[str] = None,
+    rating: Optional[str] = None,
+    sort_by: Optional[str] = None,
+    order: Optional[str] = "desc",
+    db: Session = Depends(get_db)
+):
     query = db.query(models.Player)
     if team_id is not None:
         query = query.filter(models.Player.team_id == team_id)
@@ -23,6 +48,17 @@ def get_players(team_id: Optional[int] = None, search: Optional[str] = None,db: 
                 models.Player.last_name.ilike(f"%{search}%")
             )
         )
+    if position is not None:
+        query = query.filter(models.Player.primary_position == position)
+    if chemistry_type is not None:
+        query = query.filter(models.Player.chemistry_type == chemistry_type)
+    if rating is not None:
+        query = query.filter(models.Player.rating == rating)
+
+    if sort_by in SORTABLE_FIELDS:
+        column = SORTABLE_FIELDS[sort_by]
+        query = query.order_by(desc(column) if order == "desc" else asc(column))
+
     return query.all()
 
 @router.get("/{player_id}", response_model=schemas.Player)
