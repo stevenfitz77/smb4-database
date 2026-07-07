@@ -1,4 +1,4 @@
-import { RATINGS, POSITIONS } from '../constants';
+import { RATINGS, POSITIONS, POSITION_SORT_ORDER } from '../constants';
 
 export function sortPlayers(players, sortBy, order) {
   if (!sortBy) return players;
@@ -17,6 +17,7 @@ export function sortPlayers(players, sortBy, order) {
       case 'pitch_arsenal':
         return (p.pitch_arsenal || []).length;
       case 'primary_position':
+        return POSITION_SORT_ORDER.indexOf(p.primary_position);
       case 'chemistry_type':
       case 'bat_hand':
       case 'throw_hand':

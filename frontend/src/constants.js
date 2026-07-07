@@ -59,3 +59,8 @@ export const CHEMISTRY_ICONS = {
   Scholarly: '/chemistry-icons/scholarly.png',
   Crafty: '/chemistry-icons/crafty.png',
 };
+
+export const POSITION_SORT_ORDER = [
+  "SP", "SP/RP", "RP", "CP",
+  "C", "1B", "2B", "3B", "SS", "IF", "LF", "CF", "RF", "OF"
+];
