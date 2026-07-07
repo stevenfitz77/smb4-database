@@ -58,7 +58,7 @@ function PlayersPage() {
     <div className="players-page">
       <div className="players-page-header">
         <h1>{view === 'pitchers' ? 'Pitchers' : 'Position Players'}</h1>
-        {/*<Link to="/admin/players/new" className="temp-admin-button">+ New Player (TEMP)</Link>*/}
+        <Link to="/admin/players/new" className="temp-admin-button">+ New Player (TEMP)</Link>
       </div>
 
       <div className="view-toggle">

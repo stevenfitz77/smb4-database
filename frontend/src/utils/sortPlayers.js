@@ -21,6 +21,10 @@ export function sortPlayers(players, sortBy, order) {
       case 'bat_hand':
       case 'throw_hand':
         return (p[sortBy] || '').toLowerCase();
+      case 'trait_1':
+        return (p.traits?.[0] || '').toLowerCase();
+      case 'trait_2':
+        return (p.traits?.[1] || '').toLowerCase();
       default:
         return p[sortBy]; // numeric fields: age, power, contact, speed, fielding, arm, velocity, junk, accuracy, jersey_number
     }

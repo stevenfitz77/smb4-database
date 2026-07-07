@@ -14,7 +14,7 @@
 
 .player-detail-info h1 {
   margin: 0 0 0.25rem 0;
-  color: #1a1a2e;
+  color: #ffffff;
 }
 
 .jersey {
@@ -44,23 +44,41 @@
   margin-bottom: 1.5rem;
 }
 
+.stat-bar {
+  margin-bottom: 0.75rem;
+}
+
 .stat-bar-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  color: rgb(198, 198, 198);
   margin-bottom: 0.25rem;
 }
 
 .stat-bar-track {
+  position: relative;
+  height: 24px;
   background: #e0e0e0;
   border-radius: 4px;
-  height: 10px;
   overflow: hidden;
 }
 
 .stat-bar-fill {
-  background: #1a1a2e;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
+}
+
+.stat-bar-number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
 .pitch-tags,
@@ -77,4 +95,17 @@
   padding: 0.35rem 0.75rem;
   border-radius: 999px;
   font-size: 0.85rem;
+}
+
+.trait-tag .chemistry-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.trait-tag .chemistry-label {
+  gap: 0.4rem;
+}
+
+.player-detail-info .chemistry-label {
+  vertical-align: middle;
 }

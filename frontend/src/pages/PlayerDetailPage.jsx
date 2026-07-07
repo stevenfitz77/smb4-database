@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getPlayer, deletePlayer } from '../api/client';
-import { PITCHER_POSITIONS } from '../constants';
+import { PITCHER_POSITIONS, TRAIT_CHEMISTRY } from '../constants';
 import './PlayerDetailPage.css';
 import { getStatColor } from '../utils/statColor';
+import ChemistryLabel from '../components/ChemistryLabel';
 
 function PlayerDetailPage() {
   const { playerId } = useParams();
@@ -47,10 +48,10 @@ function PlayerDetailPage() {
     <div className="player-detail-page">
       <Link to="/" className="back-link">&larr; All Players</Link>
 
-      {/*<Link to={`/admin/players/${player.id}/edit`} className="temp-admin-button">Edit Player (TEMP)</Link>
+      <Link to={`/admin/players/${player.id}/edit`} className="temp-admin-button">Edit Player (TEMP)</Link>
       <button onClick={handleDelete} disabled={deleting} className="temp-admin-button temp-admin-delete">
         {deleting ? 'Deleting...' : 'Delete Player (TEMP)'}
-      </button>*/}
+      </button>
 
       <div className="player-detail-header">
         <div className="player-detail-image">
@@ -80,7 +81,7 @@ function PlayerDetailPage() {
             )}
           </p>
 
-          <p><strong>Chemistry:</strong> {player.chemistry_type}</p>
+          <p><strong>Chemistry:</strong> <ChemistryLabel chemistry={player.chemistry_type} text={player.chemistry_type} /></p>
           <p><strong>Rating:</strong> {player.rating}</p>
         </div>
       </div>
@@ -121,7 +122,9 @@ function PlayerDetailPage() {
           <h2>Traits</h2>
           <div className="trait-list">
             {player.traits.map((trait) => (
-              <span key={trait} className="trait-tag">{trait}</span>
+              <span key={trait} className="trait-tag">
+                <ChemistryLabel chemistry={TRAIT_CHEMISTRY[trait]} text={trait} />
+              </span>
             ))}
           </div>
         </div>
@@ -132,14 +135,20 @@ function PlayerDetailPage() {
 
 function StatBar({ label, value }) {
   if (value === null || value === undefined) return null;
+
+  const color = getStatColor(value);
+
   return (
     <div className="stat-bar">
       <div className="stat-bar-label">
-        <span>{label}</span>
-        <span>{value}</span>
+        {label}
       </div>
       <div className="stat-bar-track">
-        <div className="stat-bar-fill" style={{ width: `${value}%` }} />
+        <div
+          className="stat-bar-fill"
+          style={{ width: `${value}%`, backgroundColor: color }}
+        />
+        <span className="stat-bar-number">{value}</span>
       </div>
     </div>
   );

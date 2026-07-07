@@ -110,6 +110,18 @@
 .players-table thead th {
   position: sticky;
   top: 0;
-  background-color: #3a3862;
+  background-color: #1a1a2e;
   z-index: 1;
+}
+
+.chemistry-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.chemistry-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
 }

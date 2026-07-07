@@ -75,27 +75,31 @@ function TeamDetailPage() {
     <div className="team-detail-page">
       <Link to="/teams" className="back-link">&larr; All Teams</Link>
 
-      {team.stadium_image_url && (
-        <img src={team.stadium_image_url} alt={team.stadium_name} className="stadium-banner" />
-      )}
+      
 
       <div className="team-header">
         {team.logo_url ? (
           <img src={team.logo_url} alt={team.name} className="team-header-logo" />
         ) : (
-          <div className="team-header-placeholder">{getInitials(team.name)}</div>
+          <div className="team-header-placeholder">{team.name}</div>
         )}
         <div>
           <h1>{team.city ? `${team.city} ` : ''}{team.name}</h1>
           {team.abbreviation && <p className="team-header-abbr">{team.abbreviation}</p>}
-          <p className="team-header-stadium">{team.stadium_name}</p>
         </div>
+        <div className="stadium-block">
+          {team.stadium_image_url && (
+            <img src={team.stadium_image_url} alt={team.stadium_name} className="stadium-banner" />
+          )}
+          <p className="stadium-name-caption">{team.stadium_name}</p>
+        </div>
+        
       </div>
 
-      {/*<Link to={`/admin/teams/${team.id}/edit`} className="temp-admin-button">Edit Team (TEMP)</Link>
+      <Link to={`/admin/teams/${team.id}/edit`} className="temp-admin-button">Edit Team (TEMP)</Link>
       <button onClick={handleDelete} disabled={deleting} className="temp-admin-button temp-admin-delete">
         {deleting ? 'Deleting...' : 'Delete Team (TEMP)'}
-      </button>*/}
+      </button>
 
       <h2>{view === 'pitchers' ? 'Pitchers' : 'Position Players'}</h2>
 

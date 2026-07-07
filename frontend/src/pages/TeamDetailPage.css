@@ -17,6 +17,10 @@
   margin-bottom: 2rem;
 }
 
+.team-header-info {
+  flex: 1;
+}
+
 .team-header-logo {
   width: 90px;
   height: 90px;
@@ -55,11 +59,23 @@
   margin-bottom: 1rem;
 }
 
+.stadium-block {
+  margin-left: auto;
+  flex-shrink: 0;
+  text-align: center;
+}
+
 .stadium-banner {
-  width: 100%;
-  max-height: 280px;
+  width: 400px;
+  height: 250px;
   object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
   display: block;
+}
+
+.stadium-name-caption {
+  margin: 0.4rem 0 0 0;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
 }

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import SortableTh from './SortableTh';
 import { getStatColor } from '../utils/statColor';
 import './PlayersTable.css';
+import ChemistryLabel from './ChemistryLabel';
+import { TRAIT_CHEMISTRY } from '../constants';
 
 function StatCell({ value }) {
   if (value === null || value === undefined) return <td>—</td>;
@@ -28,12 +30,15 @@ function PitchersTable({ players, sortBy, order, onSort }) {
             <SortableTh label="Team" field="team" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Age" field="age" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Throws" field="throw_hand" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="Bats" field="bat_hand" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Rating" field="rating" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Chemistry" field="chemistry_type" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="VEL" field="velocity" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="JUNK" field="junk" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="ACC" field="accuracy" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Pitches" field="pitch_arsenal" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="Trait 1" field="trait_1" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="Trait 2" field="trait_2" sortBy={sortBy} order={order} onSort={onSort} />
           </tr>
         </thead>
         <tbody>
@@ -59,12 +64,23 @@ function PitchersTable({ players, sortBy, order, onSort }) {
               </td>
               <td>{player.age}</td>
               <td>{player.throw_hand}</td>
+              <td>{player.bat_hand}</td>
               <td>{player.rating}</td>
-              <td>{player.chemistry_type}</td>
+              <td><ChemistryLabel chemistry={player.chemistry_type} text={player.chemistry_type} /></td>
               <StatCell value={player.velocity} />
               <StatCell value={player.junk} />
               <StatCell value={player.accuracy} />
               <td>{player.pitch_arsenal?.join(', ') ?? '—'}</td>
+              <td>
+                {player.traits?.[0]
+                  ? <ChemistryLabel chemistry={TRAIT_CHEMISTRY[player.traits[0]]} text={player.traits[0]} />
+                  : '—'}
+              </td>
+              <td>
+                {player.traits?.[1]
+                  ? <ChemistryLabel chemistry={TRAIT_CHEMISTRY[player.traits[1]]} text={player.traits[1]} />
+                  : '—'}
+              </td>
             </tr>
           ))}
         </tbody>

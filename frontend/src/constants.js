@@ -51,3 +51,11 @@ export const THROW_HANDS = ["R", "L"];
 export const BAT_HANDS = ["R", "L", "S"];
 
 export const TWO_WAY_TRAITS = new Set(["Two Way (C)", "Two Way (IF)", "Two Way (OF)"]);
+
+export const CHEMISTRY_ICONS = {
+  Competitive: '/chemistry-icons/competitive.png',
+  Spirited: '/chemistry-icons/spirited.png',
+  Disciplined: '/chemistry-icons/disciplined.png',
+  Scholarly: '/chemistry-icons/scholarly.png',
+  Crafty: '/chemistry-icons/crafty.png',
+};
