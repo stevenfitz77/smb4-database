@@ -16,11 +16,11 @@
   color: #c0392b;
 }
 
-.player-grid {
+/*.player-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
-}
+}*/
 
 .players-page-header {
   display: flex;
@@ -36,11 +36,14 @@
   margin-bottom: 1.5rem;
 }
 
+.search-input,
 .filters-bar select {
-  padding: 0.6rem;
+  height: 38px;
+  padding: 0 0.6rem;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 0.9rem;
+  box-sizing: border-box;
 }
 
 .view-toggle {
@@ -53,6 +56,7 @@
   padding: 0.5rem 1.25rem;
   border: 1px solid #ccc;
   background: white;
+  color: #1a1a2e;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.9rem;

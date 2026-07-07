@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getTeam, createTeam, updateTeam } from '../api/client';
 import './TeamFormPage.css';
 
-const emptyForm = { name: '', city: '', abbreviation: '', stadium_name: '', logo_url: '' };
+const emptyForm = { name: '', city: '', abbreviation: '', stadium_name: '', stadium_image_url: '', logo_url: '' };
 
 function TeamFormPage() {
   const { teamId } = useParams();
@@ -23,6 +23,7 @@ function TeamFormPage() {
         city: team.city ?? '',
         abbreviation: team.abbreviation ?? '',
         stadium_name: team.stadium_name ?? '',
+        stadium_image_url: team.stadium_image_url ?? '',
         logo_url: team.logo_url ?? '',
       });
     }).finally(() => setLoading(false));
@@ -42,6 +43,7 @@ function TeamFormPage() {
       city: formData.city || null,
       abbreviation: formData.abbreviation || null,
       stadium_name: formData.stadium_name,
+      stadium_image_url: formData.stadium_image_url || null,
       logo_url: formData.logo_url || null,
     };
 
@@ -96,6 +98,10 @@ function TeamFormPage() {
           <label>
             Stadium Name
             <input name="stadium_name" value={formData.stadium_name} onChange={handleChange} required />
+          </label>
+          <label>
+            Stadium Image URL
+            <input name="stadium_image_url" value={formData.stadium_image_url} onChange={handleChange} placeholder="/stadiums/wild-pigs-stadium.png" />
           </label>
         </div>
 

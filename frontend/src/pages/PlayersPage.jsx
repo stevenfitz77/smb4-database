@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { getPlayers } from '../api/client';
 import BattersTable from '../components/BattersTable';
 import PitchersTable from '../components/PitchersTable';
-import { POSITIONS, CHEMISTRY_TYPES, RATINGS, PITCHER_POSITIONS, TWO_WAY_TRAITS } from '../constants';
+import { POSITIONS, CHEMISTRY_TYPES, RATINGS } from '../constants';
 import { Link } from 'react-router-dom';
 import './PlayersPage.css';
+import { sortPlayers } from '../utils/sortPlayers';
+import { isPitcher, isTwoWay } from '../utils/playerRoles';
 
 function PlayersPage() {
   const [players, setPlayers] = useState([]);
@@ -28,30 +30,15 @@ function PlayersPage() {
       if (position) params.position = position;
       if (chemistryType) params.chemistry_type = chemistryType;
       if (rating) params.rating = rating;
-      if (sortBy && sortBy !== 'rating') {
-        params.sort_by = sortBy;
-        params.order = order;
-      }
 
       getPlayers(params)
-        .then((data) => {
-          if (sortBy === 'rating') {
-            const sorted = [...data].sort((a, b) => {
-              const diff = RATINGS.indexOf(a.rating) - RATINGS.indexOf(b.rating);
-              return order === 'desc' ? -diff : diff;
-            });
-            setPlayers(sorted);
-          } else {
-            setPlayers(data);
-          }
-        })
+        .then(setPlayers)
         .catch(() => setError('Failed to load players.'))
         .finally(() => setLoading(false));
     }, 300);
 
     return () => clearTimeout(timeoutId);
-  }, [search, position, chemistryType, rating, sortBy, order]);
-
+  }, [search, position, chemistryType, rating]);
   const handleSort = (field) => {
     if (sortBy === field) {
       setOrder(order === 'asc' ? 'desc' : 'asc');
@@ -61,11 +48,10 @@ function PlayersPage() {
     }
   };
 
-  const isPitcher = (p) => PITCHER_POSITIONS.has(p.primary_position);
-  const isTwoWay = (p) => p.traits?.some((t) => TWO_WAY_TRAITS.has(t));
-
-  const displayedPlayers = players.filter((p) =>
-    view === 'pitchers' ? isPitcher(p) : (!isPitcher(p) || isTwoWay(p))
+  const displayedPlayers = sortPlayers(
+    players.filter((p) => view === 'pitchers' ? isPitcher(p) : (!isPitcher(p) || isTwoWay(p))),
+    sortBy,
+    order
   );
 
   return (

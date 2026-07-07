@@ -1,0 +1,38 @@
+import { RATINGS, POSITIONS } from '../constants';
+
+export function sortPlayers(players, sortBy, order) {
+  if (!sortBy) return players;
+  const dir = order === 'desc' ? -1 : 1;
+
+  const getValue = (p) => {
+    switch (sortBy) {
+      case 'name':
+        return `${p.last_name} ${p.first_name}`.toLowerCase();
+      case 'team':
+        return p.team ? p.team.name.toLowerCase() : '';
+      case 'rating':
+        return RATINGS.indexOf(p.rating);
+      case 'secondary_positions':
+        return p.secondary_positions?.length ? POSITIONS.indexOf(p.secondary_positions[0]) : null;
+      case 'pitch_arsenal':
+        return (p.pitch_arsenal || []).length;
+      case 'primary_position':
+      case 'chemistry_type':
+      case 'bat_hand':
+      case 'throw_hand':
+        return (p[sortBy] || '').toLowerCase();
+      default:
+        return p[sortBy]; // numeric fields: age, power, contact, speed, fielding, arm, velocity, junk, accuracy, jersey_number
+    }
+  };
+
+  return [...players].sort((a, b) => {
+    const va = getValue(a);
+    const vb = getValue(b);
+    if (va === null || va === undefined) return 1;
+    if (vb === null || vb === undefined) return -1;
+    if (va < vb) return -1 * dir;
+    if (va > vb) return 1 * dir;
+    return 0;
+  });
+}

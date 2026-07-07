@@ -59,6 +59,7 @@ class TeamBase(BaseModel):
     city: Optional[str] = None
     abbreviation: Optional[str] = None
     stadium_name: str
+    stadium_image_url: Optional[str] = None
     logo_url: Optional[str] = None
 
     @field_validator("abbreviation")

@@ -10,6 +10,7 @@ class Team(Base):
     abbreviation = Column(String, nullable=True)
     stadium_name = Column(String, nullable=True)
     logo_url = Column(String, nullable=True)
+    stadium_image_url = Column(String, nullable=True)
     players = relationship("Player", back_populates="team")
 
 class Player(Base):

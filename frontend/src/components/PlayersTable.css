@@ -1,7 +1,12 @@
 .players-table {
   width: 100%;
+  min-width: max-content;
   border-collapse: collapse;
   font-size: 0.9rem;
+}
+
+.players-table, .players-table * {
+  box-sizing: border-box;
 }
 
 .players-table th {
@@ -93,4 +98,18 @@
 
 .sortable-th:hover {
   color: #378ADD;
+}
+
+.table-scroll-wrapper {
+  width: 100%;
+  max-height: 70vh;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.players-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #3a3862;
+  z-index: 1;
 }
