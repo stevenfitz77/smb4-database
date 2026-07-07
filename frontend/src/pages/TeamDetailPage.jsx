@@ -96,10 +96,14 @@ function TeamDetailPage() {
         
       </div>
 
-      <Link to={`/admin/teams/${team.id}/edit`} className="temp-admin-button">Edit Team (TEMP)</Link>
-      <button onClick={handleDelete} disabled={deleting} className="temp-admin-button temp-admin-delete">
-        {deleting ? 'Deleting...' : 'Delete Team (TEMP)'}
-      </button>
+      {import.meta.env.DEV && (
+        <Link to={`/admin/teams/${team.id}/edit`} className="temp-admin-button">Edit Team (TEMP)</Link>
+      )}
+      {import.meta.env.DEV && (
+        <button onClick={handleDelete} disabled={deleting} className="temp-admin-button temp-admin-delete">
+          {deleting ? 'Deleting...' : 'Delete Team (TEMP)'}
+        </button>
+      )}
 
       <h2>{view === 'pitchers' ? 'Pitchers' : 'Position Players'}</h2>
 

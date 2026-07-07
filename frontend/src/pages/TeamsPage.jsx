@@ -21,9 +21,9 @@ function TeamsPage() {
   return (
     <div className="teams-page">
       <h1>Teams</h1>
-
-      <Link to="/admin/teams/new" className="temp-admin-button">+ New Team (TEMP)</Link>
-
+      {import.meta.env.DEV && (
+        <Link to="/admin/teams/new" className="temp-admin-button">+ New Team (TEMP)</Link>
+      )}
       <div className="team-grid">
         {teams.map((team) => (
           <Link to={`/teams/${team.id}`} key={team.id} className="team-card">
