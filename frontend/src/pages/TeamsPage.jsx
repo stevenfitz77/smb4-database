@@ -22,7 +22,7 @@ function TeamsPage() {
     <div className="teams-page">
       <h1>Teams</h1>
 
-        <Link to="/admin/teams/new" className="temp-admin-button">+ New Team (TEMP)</Link>
+      {/*<Link to="/admin/teams/new" className="temp-admin-button">+ New Team (TEMP)</Link>*/}
 
       <div className="team-grid">
         {teams.map((team) => (

@@ -57,16 +57,13 @@ function PlayersPage() {
   return (
     <div className="players-page">
       <div className="players-page-header">
-        <h1>Players</h1>
-        <Link to="/admin/players/new" className="temp-admin-button">+ New Player (TEMP)</Link>
+        <h1>{view === 'pitchers' ? 'Pitchers' : 'Position Players'}</h1>
+        {/*<Link to="/admin/players/new" className="temp-admin-button">+ New Player (TEMP)</Link>*/}
       </div>
 
       <div className="view-toggle">
-        <button className={view === 'batters' ? 'active' : ''} onClick={() => setView('batters')}>
-          Batters
-        </button>
-        <button className={view === 'pitchers' ? 'active' : ''} onClick={() => setView('pitchers')}>
-          Pitchers
+        <button onClick={() => setView(view === 'batters' ? 'pitchers' : 'batters')}>
+          {view === 'batters' ? 'Pitchers' : 'Position Players'}
         </button>
       </div>
 

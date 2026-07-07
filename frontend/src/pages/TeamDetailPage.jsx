@@ -92,19 +92,16 @@ function TeamDetailPage() {
         </div>
       </div>
 
-      <Link to={`/admin/teams/${team.id}/edit`} className="temp-admin-button">Edit Team (TEMP)</Link>
+      {/*<Link to={`/admin/teams/${team.id}/edit`} className="temp-admin-button">Edit Team (TEMP)</Link>
       <button onClick={handleDelete} disabled={deleting} className="temp-admin-button temp-admin-delete">
         {deleting ? 'Deleting...' : 'Delete Team (TEMP)'}
-      </button>
+      </button>*/}
 
-      <h2>Roster ({players.length})</h2>
+      <h2>{view === 'pitchers' ? 'Pitchers' : 'Position Players'}</h2>
 
       <div className="view-toggle">
-        <button className={view === 'batters' ? 'active' : ''} onClick={() => setView('batters')}>
-          Batters
-        </button>
-        <button className={view === 'pitchers' ? 'active' : ''} onClick={() => setView('pitchers')}>
-          Pitchers
+        <button onClick={() => setView(view === 'batters' ? 'pitchers' : 'batters')}>
+          {view === 'batters' ? 'Pitchers' : 'Position Players'}
         </button>
       </div>
 

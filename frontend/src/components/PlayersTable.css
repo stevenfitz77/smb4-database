@@ -13,7 +13,7 @@
   text-align: left;
   padding: 0.6rem 0.75rem;
   border-bottom: 2px solid #1a1a2e;
-  color: #1a1a2e;
+  color: #fbfbfd;
   white-space: nowrap;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .players-table tbody tr:hover {
-  background-color: #f5f5f5;
+  background-color: #585890;
 }
 
 .table-photo-cell {
@@ -47,9 +47,9 @@
 }
 
 .table-name-link {
-  color: #1a1a2e;
+  color: #c2c2df;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .table-name-link:hover {

@@ -1,11 +1,11 @@
 .app {
   min-height: 100vh;
-  background-color: #454864;
+  background-color: #373b5b;
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   background-color: #1a1a2e;
   padding: 1rem 2rem;
@@ -16,17 +16,29 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
+  justify-self: start;
+}
+
+.nav-logo-center {
+  justify-self: center;
+}
+
+.nav-logo {
+  height: 40px;
+  display: block;
+  cursor: default;
 }
 
 .nav-links {
   display: flex;
   gap: 1.5rem;
+  justify-self: end;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .nav-links a:hover {

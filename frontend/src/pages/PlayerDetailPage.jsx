@@ -47,10 +47,10 @@ function PlayerDetailPage() {
     <div className="player-detail-page">
       <Link to="/" className="back-link">&larr; All Players</Link>
 
-      <Link to={`/admin/players/${player.id}/edit`} className="temp-admin-button">Edit Player (TEMP)</Link>
+      {/*<Link to={`/admin/players/${player.id}/edit`} className="temp-admin-button">Edit Player (TEMP)</Link>
       <button onClick={handleDelete} disabled={deleting} className="temp-admin-button temp-admin-delete">
         {deleting ? 'Deleting...' : 'Delete Player (TEMP)'}
-      </button>
+      </button>*/}
 
       <div className="player-detail-header">
         <div className="player-detail-image">

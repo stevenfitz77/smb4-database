@@ -61,9 +61,3 @@
   cursor: pointer;
   font-size: 0.9rem;
 }
-
-.view-toggle button.active {
-  background: #1a1a2e;
-  color: white;
-  border-color: #1a1a2e;
-}

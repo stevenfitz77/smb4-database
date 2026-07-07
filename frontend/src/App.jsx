@@ -11,7 +11,10 @@ function App() {
   return (
     <div className="app">
       <nav className="navbar">
-        <Link to="/" className="nav-title">SMB4 Player Database</Link>
+        <Link to="/" className="nav-title">SMB4 Database</Link>
+        <Link to="/" className="nav-logo-center">
+          <img src="/misc/smb4_logo.png" alt="Super Mega Baseball 4" className="nav-logo"></img>
+        </Link>
         <div className="nav-links">
           <Link to="/">Players</Link>
           <Link to="/teams">Teams</Link>
