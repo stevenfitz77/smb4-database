@@ -93,19 +93,25 @@ function PlayerDetailPage() {
       <div className="player-stats">
         <h2>Stats</h2>
         <div className="stat-grid">
-          <StatBar label="Power" value={player.power} />
-          <StatBar label="Contact" value={player.contact} />
-          <StatBar label="Speed" value={player.speed} />
-          <StatBar label="Fielding" value={player.fielding} />
 
           {isPitcher ? (
             <>
               <StatBar label="Velocity" value={player.velocity} />
               <StatBar label="Junk" value={player.junk} />
               <StatBar label="Accuracy" value={player.accuracy} />
+              <StatBar label="Speed" value={player.speed} />
+              <StatBar label="Fielding" value={player.fielding} />
+              <StatBar label="Power" value={player.power} />
+              <StatBar label="Contact" value={player.contact} />
             </>
           ) : (
-            <StatBar label="Arm" value={player.arm} />
+            <>   
+              <StatBar label="Power" value={player.power} />
+              <StatBar label="Contact" value={player.contact} />
+              <StatBar label="Speed" value={player.speed} />
+              <StatBar label="Fielding" value={player.fielding} />
+              <StatBar label="Arm" value={player.arm} />
+            </>
           )}
         </div>
 
