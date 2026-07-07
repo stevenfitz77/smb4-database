@@ -36,6 +36,8 @@ function PitchersTable({ players, sortBy, order, onSort }) {
             <SortableTh label="VEL" field="velocity" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="JUNK" field="junk" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="ACC" field="accuracy" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="SPD" field="speed" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="FLD" field="fielding" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Pitches" field="pitch_arsenal" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Trait 1" field="trait_1" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Trait 2" field="trait_2" sortBy={sortBy} order={order} onSort={onSort} />
@@ -70,6 +72,8 @@ function PitchersTable({ players, sortBy, order, onSort }) {
               <StatCell value={player.velocity} />
               <StatCell value={player.junk} />
               <StatCell value={player.accuracy} />
+              <StatCell value={player.speed} />
+              <StatCell value={player.fielding} />
               <td>{player.pitch_arsenal?.join(', ') ?? '—'}</td>
               <td>
                 {player.traits?.[0]
