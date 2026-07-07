@@ -6,10 +6,12 @@ import PlayerDetailPage from './pages/PlayerDetailPage';
 import PlayerFormPage from './pages/PlayerFormPage';
 import TeamFormPage from './pages/TeamFormPage';
 import './App.css';
+import NoticeBanner from './components/NoticeBanner';
 
 function App() {
   return (
     <div className="app">
+      <NoticeBanner />
       <nav className="navbar">
         <Link to="/" className="nav-title">SMB4 Database</Link>
         <Link to="/" className="nav-logo-center">

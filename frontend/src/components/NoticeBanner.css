@@ -1,0 +1,25 @@
+.notice-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #fff3cd;
+  color: #7a5c00;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.notice-dismiss {
+  background: none;
+  border: none;
+  color: #7a5c00;
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.1rem 0.4rem;
+}
+
+.notice-dismiss:hover {
+  color: #4a3800;
+}

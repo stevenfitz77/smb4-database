@@ -64,3 +64,5 @@ export const POSITION_SORT_ORDER = [
   "SP", "SP/RP", "RP", "CP",
   "C", "1B", "2B", "3B", "SS", "IF", "LF", "CF", "RF", "OF"
 ];
+
+export const SITE_NOTICE = "Still being uploaded: 176 players, all player headshots, all team logos, all stadium photos except Golden Field"
