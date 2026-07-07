@@ -20,7 +20,7 @@ TRAIT_CHEMISTRY = {
     # Disciplined
     "Composed": "Disciplined", "Consistent": "Disciplined", "Metal Head": "Disciplined",
     "Volatile": "Disciplined", "BB Prone": "Disciplined", "Base Rounder": "Disciplined",
-    "Dive Wizard": "Disciplined", "Fastball Hitter": "Disciplined", "High Pitch": "Disciplined",
+    "Fastball Hitter": "Disciplined", "High Pitch": "Disciplined",
     "Inside Pitch": "Disciplined", "Low Pitch": "Disciplined", "Magic Hands": "Disciplined",
     "Off-Speed Hitter": "Disciplined", "Outside Pitch": "Disciplined", "Pinch Perfect": "Disciplined",
     "Base Jogger": "Disciplined", "Butter Fingers": "Disciplined",
@@ -28,18 +28,18 @@ TRAIT_CHEMISTRY = {
     # Competitive
     "Durable": "Competitive", "K Collector": "Competitive", "Workhorse": "Competitive",
     "Injury Prone": "Competitive", "K Neglector": "Competitive", "Cannon Arm": "Competitive",
-    "First Pitch Slayer": "Competitive", "Sprinter": "Competitive", "Stealer": "Competitive",
+    "First Pitch Slayer": "Competitive", "Sprinter": "Competitive",
     "Tough Out": "Competitive", "First Pitch Prayer": "Competitive", "Noodle Arm": "Competitive",
     "Slow Poke": "Competitive", "Whiffer": "Competitive",
 
     # Crafty
     "Pick Officer": "Crafty", "Reverse Splits": "Crafty", "Specialist": "Crafty",
-    "Stimulated": "Crafty", "Easy Jumps": "Crafty", "Bad Ball Hitter": "Crafty",
+    "Stealer": "Crafty", "Stimulated": "Crafty", "Easy Jumps": "Crafty", "Bad Ball Hitter": "Crafty",
     "Distractor": "Crafty", "Mind Gamer": "Crafty", "Sign Stealer": "Crafty",
     "Bad Jumps": "Crafty", "Easy Target": "Crafty", "Wild Thrower": "Crafty",
 
     # Spirited
-    "Clutch": "Spirited", "Rally Stopper": "Spirited", "Two Way (C)": "Spirited",
+    "Clutch": "Spirited", "Dive Wizard": "Spirited", "Rally Stopper": "Spirited", "Two Way (C)": "Spirited",
     "Two Way (IF)": "Spirited", "Two Way (OF)": "Spirited", "Choker": "Spirited",
     "Meltdown": "Spirited", "Surrounded": "Spirited", "Wild Thing": "Spirited",
     "CON vs LHP": "Spirited", "CON vs RHP": "Spirited", "POW vs LHP": "Spirited",
