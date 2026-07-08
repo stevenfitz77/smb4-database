@@ -22,7 +22,7 @@ export const TRAIT_CHEMISTRY = {
   "Off-Speed Hitter": "Disciplined", "Outside Pitch": "Disciplined", "Pinch Perfect": "Disciplined",
   "Base Jogger": "Disciplined", "Butter Fingers": "Disciplined",
   "Durable": "Competitive", "K Collector": "Competitive", "Workhorse": "Competitive",
-  "Injury Prone": "Competitive", "K Neglector": "Competitive", "Cannon Arm": "Competitive",
+  "Injury Prone": "Competitive", "K Neglecter": "Competitive", "Cannon Arm": "Competitive",
   "First Pitch Slayer": "Competitive", "Sprinter": "Competitive", "Stealer": "Crafty",
   "Tough Out": "Competitive", "First Pitch Prayer": "Competitive", "Noodle Arm": "Competitive",
   "Slow Poke": "Competitive", "Whiffer": "Competitive",
@@ -65,4 +65,4 @@ export const POSITION_SORT_ORDER = [
   "C", "1B", "2B", "3B", "SS", "IF", "LF", "CF", "RF", "OF"
 ];
 
-export const SITE_NOTICE = "Still being uploaded: 176 players, all player headshots, all team logos, all stadium photos except Golden Field"
+export const SITE_NOTICE = "Images not yet uploaded - Working on it | Contact developer stevenfitzg@gmail.com"

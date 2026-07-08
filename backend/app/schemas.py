@@ -27,7 +27,7 @@ TRAIT_CHEMISTRY = {
 
     # Competitive
     "Durable": "Competitive", "K Collector": "Competitive", "Workhorse": "Competitive",
-    "Injury Prone": "Competitive", "K Neglector": "Competitive", "Cannon Arm": "Competitive",
+    "Injury Prone": "Competitive", "K Neglecter": "Competitive", "Cannon Arm": "Competitive",
     "First Pitch Slayer": "Competitive", "Sprinter": "Competitive",
     "Tough Out": "Competitive", "First Pitch Prayer": "Competitive", "Noodle Arm": "Competitive",
     "Slow Poke": "Competitive", "Whiffer": "Competitive",

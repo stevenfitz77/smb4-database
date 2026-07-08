@@ -12,8 +12,14 @@ export function sortPlayers(players, sortBy, order) {
         return p.team ? p.team.name.toLowerCase() : '';
       case 'rating':
         return RATINGS.indexOf(p.rating);
-      case 'secondary_positions':
-        return p.secondary_positions?.length ? POSITIONS.indexOf(p.secondary_positions[0]) : null;
+      case 'secondary_positions': {
+        const secs = p.secondary_positions || [];
+        if (secs.length === 2) {
+          return `0_${[...secs].sort().join('/')}`;
+        }
+        const idx = secs.length === 1 ? POSITIONS.indexOf(secs[0]) : 99;
+        return `1_${String(idx).padStart(2, '0')}`;
+      }
       case 'pitch_arsenal':
         return (p.pitch_arsenal || []).length;
       case 'primary_position':
