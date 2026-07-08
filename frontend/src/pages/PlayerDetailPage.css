@@ -27,6 +27,16 @@
   margin: 0.4rem 0;
 }
 
+.player-detail-info a {
+  color: #9ca3af;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.player-detail-info a:hover {
+  text-decoration: underline;
+}
+
 .free-agent {
   font-style: italic;
   color: #888;

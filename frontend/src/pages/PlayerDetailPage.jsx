@@ -79,7 +79,7 @@ function PlayerDetailPage() {
           <p>
             <strong>Team:</strong>{' '}
             {player.team ? (
-              <Link to={`/teams/${player.team.id}`}>{player.team.name}</Link>
+              <Link to={`/teams/${player.team.id}`} class="player-detail-team-link">{player.team.name}</Link>
             ) : (
               <span className="free-agent">Free Agent</span>
             )}
