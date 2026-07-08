@@ -7,7 +7,7 @@ import PlayerFormPage from './pages/PlayerFormPage';
 import TeamFormPage from './pages/TeamFormPage';
 import './App.css';
 import NoticeBanner from './components/NoticeBanner';
-import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   return (
