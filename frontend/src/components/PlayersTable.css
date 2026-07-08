@@ -56,6 +56,16 @@
   text-decoration: underline;
 }
 
+.table-team-link {
+  color: #c2c2df;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.table-team-link:hover {
+  text-decoration: underline;
+}
+
 .free-agent {
   color: #888;
   font-style: italic;
