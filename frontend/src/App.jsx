@@ -7,6 +7,7 @@ import PlayerFormPage from './pages/PlayerFormPage';
 import TeamFormPage from './pages/TeamFormPage';
 import './App.css';
 import NoticeBanner from './components/NoticeBanner';
+import { Analytics } from '@vercel/analytics/next'
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           <Route path="/admin/teams/:teamId/edit" element={<TeamFormPage />} />
         </Routes>
       </main>
+
+    <Analytics /> {/* vercel analytics */}
+    
     </div>
   );
 }
