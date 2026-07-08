@@ -65,4 +65,4 @@ export const POSITION_SORT_ORDER = [
   "C", "1B", "2B", "3B", "SS", "IF", "LF", "CF", "RF", "OF"
 ];
 
-export const SITE_NOTICE = "Images not yet uploaded - Working on it | Contact developer stevenfitzg@gmail.com"
+export const SITE_NOTICE = "In case of \"Error loading ____\", refresh page | Team logos & stadium photos not yet uploaded - Working on it | Contact developer stevenfitzg@gmail.com"
