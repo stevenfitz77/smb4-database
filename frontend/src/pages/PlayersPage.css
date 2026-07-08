@@ -38,6 +38,8 @@
 
 .search-input,
 .filters-bar select {
+  color: black;
+  background: white;
   height: 38px;
   padding: 0 0.6rem;
   border: 1px solid #ccc;
