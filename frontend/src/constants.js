@@ -65,4 +65,4 @@ export const POSITION_SORT_ORDER = [
   "C", "1B", "2B", "3B", "SS", "IF", "LF", "CF", "RF", "OF"
 ];
 
-export const SITE_NOTICE = "In case of \"Failed to load ____\", refresh page | Stadium photos not yet uploaded - Working on it"
+export const SITE_NOTICE = "In case of \"Failed to load ____\", refresh page | Content may take a minute to load after site inactivity | Stadium photos not yet uploaded - Working on it"
