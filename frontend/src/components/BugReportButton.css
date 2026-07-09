@@ -11,10 +11,13 @@
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   z-index: 100;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
 }
 
 .bug-report-fab:hover {
-  background: #2a2a4e;
+  opacity: 1;
+  /*background: #2a2a4e;*/
 }
 
 .bug-report-overlay {
@@ -98,4 +101,5 @@
   border-radius: 6px;
   background: white;
   cursor: pointer;
+  color: #888;
 }
