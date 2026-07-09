@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import teams, players
+from .routers import teams, players, bug_reports
 
 app = FastAPI()
 
