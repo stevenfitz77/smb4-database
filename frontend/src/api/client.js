@@ -33,3 +33,6 @@ export const updateTeam = (id, data) =>
 
 export const deleteTeam = (id) =>
   apiClient.delete(`/teams/${id}`).then(res => res.data);
+
+export const submitBugReport = (data) =>
+  apiClient.post('/bug-reports/', data).then(res => res.data);

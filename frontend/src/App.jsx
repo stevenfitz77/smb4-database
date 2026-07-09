@@ -8,6 +8,7 @@ import TeamFormPage from './pages/TeamFormPage';
 import './App.css';
 import NoticeBanner from './components/NoticeBanner';
 import { Analytics } from '@vercel/analytics/react'
+import BugReportButton from './components/BugReportButton';
 
 function App() {
   return (
@@ -37,7 +38,8 @@ function App() {
         </Routes>
       </main>
 
-    <Analytics /> {/* vercel analytics */}
+      <Analytics /> {/* vercel analytics */}
+      <BugReportButton />
     
     </div>
   );

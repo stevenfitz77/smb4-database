@@ -14,6 +14,7 @@ app.add_middleware(
 
 app.include_router(teams.router)
 app.include_router(players.router)
+app.include_router(bug_reports.router)
 
 @app.get("/")
 def read_root():
