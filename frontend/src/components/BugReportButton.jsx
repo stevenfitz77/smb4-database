@@ -33,7 +33,7 @@ function BugReportButton() {
   return (
     <>
       <button className="bug-report-fab" onClick={() => setIsOpen(true)}>
-        🐛 Report an Issue
+        Report an Issue
       </button>
 
       {isOpen && (
