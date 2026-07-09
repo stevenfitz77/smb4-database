@@ -1,6 +1,5 @@
 import os
-import smtplib
-from email.mime.text import MIMEText
+import resend
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional
@@ -17,33 +16,28 @@ class BugReport(BaseModel):
 
 @router.post("/")
 def submit_bug_report(report: BugReport):
-    smtp_email = os.getenv("SMTP_EMAIL")
-    smtp_password = os.getenv("SMTP_APP_PASSWORD")
+    api_key = os.getenv("RESEND_API_KEY")
     recipient = os.getenv("REPORT_RECIPIENT_EMAIL")
 
-    if not all([smtp_email, smtp_password, recipient]):
+    if not api_key or not recipient:
         raise HTTPException(status_code=500, detail="Email is not configured on the server")
 
-    body_lines = [
-        "New bug report from SMB4 Database:",
-        "",
-        report.message,
-        "",
-        f"Page: {report.page_url or 'not provided'}",
-        f"Contact email: {report.contact_email or 'not provided'}",
-    ]
-    body = "\n".join(body_lines)
+    resend.api_key = api_key
 
-    msg = MIMEText(body)
-    msg["Subject"] = "SMB4 Database - Bug Report"
-    msg["From"] = smtp_email
-    msg["To"] = recipient
+    body_html = f"""
+    <p><strong>New bug report from SMB4 Database</strong></p>
+    <p>{report.message}</p>
+    <p><strong>Page:</strong> {report.page_url or 'not provided'}</p>
+    <p><strong>Contact email:</strong> {report.contact_email or 'not provided'}</p>
+    """
 
     try:
-        with smtplib.SMTP("smtp.gmail.com", 587) as server:
-            server.starttls()
-            server.login(smtp_email, smtp_password)
-            server.sendmail(smtp_email, recipient, msg.as_string())
+        resend.Emails.send({
+            "from": "onboarding@resend.dev",
+            "to": recipient,
+            "subject": "SMB4 Database - Bug Report",
+            "html": body_html,
+        })
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to send report: {str(e)}")
 
