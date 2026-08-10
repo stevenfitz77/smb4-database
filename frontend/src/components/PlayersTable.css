@@ -97,8 +97,10 @@
   justify-content: center;
   font-size: 0.7rem;
   font-weight: 600;
-  color: black;
-  text-shadow: 0 0 2px rgba(255,255,255,0.5);
+
+  color: #fff;
+  text-shadow: .5px .5px 5px #000, -.5px -.5px 5px #000, .5px -.5px 5px #000, -.5px .5px 5px #000;
+
 }
 
 .sortable-th {
