@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getPlayer, deletePlayer } from '../api/client';
-import { PITCHER_POSITIONS, TRAIT_CHEMISTRY } from '../constants';
+import { PITCHER_POSITIONS, TRAIT_CHEMISTRY, TRAIT_DESCRIPTIONS } from '../constants';
 import './PlayerDetailPage.css';
 import { getStatColor } from '../utils/statColor';
 import ChemistryLabel from '../components/ChemistryLabel';
@@ -101,6 +101,13 @@ function PlayerDetailPage() {
           </p>
 
           <p><strong>Chemistry:</strong> <ChemistryLabel chemistry={player.chemistry_type} text={player.chemistry_type} /></p>
+         
+          <p><strong>Bats:</strong> {player.bat_hand}</p>
+          <p><strong>Throws:</strong> {player.throw_hand}</p>
+
+          {isPitcher && (
+            <p><strong>Arm Slot:</strong> {player.arm_slot ?? '—'}</p>
+          )}
           <p><strong>Rating:</strong> {player.rating}</p>
         </div>
       </div>
@@ -142,7 +149,7 @@ function PlayerDetailPage() {
         )}
       </div>
 
-      {player.traits?.length > 0 && (
+      {/*{player.traits?.length > 0 && (
         <div className="player-traits">
           <h2>Traits</h2>
           <div className="trait-list">
@@ -153,7 +160,22 @@ function PlayerDetailPage() {
             ))}
           </div>
         </div>
-      )}
+      )*/}
+      {player.traits?.length > 0 && (
+        <div className="player-traits">
+          <h2>Traits</h2>
+          <div className="trait-list">
+            {player.traits.map((trait) => (
+              <span key={trait} className="trait-tag">
+                <ChemistryLabel chemistry={TRAIT_CHEMISTRY[trait]} text={trait} />
+                {TRAIT_DESCRIPTIONS[trait] && (
+                  <span className="trait-tooltip">{TRAIT_DESCRIPTIONS[trait]}</span>
+                )}
+              </span>
+            ))}
+        </div>
+      </div>
+    )}
     </div>
   );
 }

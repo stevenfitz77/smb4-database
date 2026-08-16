@@ -132,3 +132,32 @@
 .blank-span {
   display: none;
 }
+
+.trait-tag {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+}
+
+.trait-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a2e;
+  color: #f3f4f6;
+  font-size: 0.78rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  white-space: normal;
+  width: 220px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 10;
+  pointer-events: none;
+  border: 1px solid #2e303a;
+}
+
+.trait-tag:hover .trait-tooltip {
+  display: block;
+}

@@ -30,6 +30,7 @@ export function sortPlayers(players, sortBy, order) {
       case 'bat_hand':
       case 'throw_hand':
         return (p[sortBy] || '').toLowerCase();
+      case 'arm_slot':
       case 'trait_1':
         return (p.traits?.[0] || '').toLowerCase();
       case 'trait_2':

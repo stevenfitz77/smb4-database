@@ -15,7 +15,7 @@ function App() {
     <div className="app">
       <NoticeBanner />
       <nav className="navbar">
-        <Link to="/" className="nav-title">SMB4 Database</Link>
+        <Link to="/" className="nav-title">Super Mega Database</Link>
         <Link to="/" className="nav-logo-center">
           <img src="/misc/smb4_logo.png" alt="Super Mega Baseball 4" className="nav-logo"></img>
         </Link>

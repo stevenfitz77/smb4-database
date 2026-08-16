@@ -113,6 +113,7 @@ class PlayerBase(BaseModel):
     junk: Optional[int] = None
     accuracy: Optional[int] = None
     pitch_arsenal: Optional[List[str]] = None
+    arm_slot: Optional[str] = None
 
     # ---- Field Validators ----
     @field_validator("power", "contact", "speed", "fielding", "arm", "velocity", "junk", "accuracy")

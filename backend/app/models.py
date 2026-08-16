@@ -47,3 +47,4 @@ class Player(Base):
     junk = Column(Integer, nullable=True)
     accuracy = Column(Integer, nullable=True)
     pitch_arsenal = Column(JSON, nullable=True) # list of 1-6 pitch types
+    arm_slot = Column(String, nullable=True)

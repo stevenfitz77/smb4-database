@@ -31,6 +31,7 @@ function PitchersTable({ players, sortBy, order, onSort }) {
             <SortableTh label="Team" field="team" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Age" field="age" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Throws" field="throw_hand" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="Arm Slot" field="arm_slot" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Bats" field="bat_hand" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Rating" field="rating" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Chemistry" field="chemistry_type" sortBy={sortBy} order={order} onSort={onSort} />
@@ -68,6 +69,7 @@ function PitchersTable({ players, sortBy, order, onSort }) {
               </td>
               <td>{player.age}</td>
               <td>{player.throw_hand}</td>
+              <td>{player.arm_slot ?? '—'}</td>
               <td>{player.bat_hand}</td>
               <td>{player.rating}</td>
               <td><ChemistryLabel chemistry={player.chemistry_type} text={player.chemistry_type} /></td>
