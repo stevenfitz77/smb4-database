@@ -108,6 +108,10 @@ function PlayersPage() {
       return false;
     }
 
+    if (!selectedPlayerGroups.has(player.player_group)) {
+      return false;
+    }
+
     return true;
   });
 
@@ -180,7 +184,7 @@ function PlayersPage() {
 
       {loading && <p>Loading players...</p>}
       {error && <p className="error-text">{error}</p>}
-      {!loading && !error && displayedPlayers.length === 0 && <p>No players found.</p>}
+      {!loading && !error && displayedPlayers.length === 0 && <p>No players found. Make sure you have at least one league selected.</p>}
 
       {!loading && !error && displayedPlayers.length > 0 && (
         view === 'pitchers'

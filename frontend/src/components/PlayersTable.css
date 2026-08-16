@@ -139,7 +139,7 @@
 }
 
 /*Compress for standard laptop screens*/
-@media (max-width: 1400px) {
+@media (min-width: 1400px) and (max-width: 1850px) {
   .players-table {
     font-size: 0.8rem;
   }

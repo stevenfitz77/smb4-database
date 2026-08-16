@@ -72,10 +72,15 @@ function PlayerDetailPage() {
 
           <p>
             <strong>Position:</strong> {player.primary_position}
-            {player.secondary_positions?.length > 0 &&
-              ` (${player.secondary_positions.join(', ')})`}
           </p>
 
+          {!(isPitcher) ? (
+            <p>
+              <strong>Secondary Position: </strong>
+              {player.secondary_positions?.length > 0 ? player.secondary_positions.join(', ') : 'None'}
+            </p>
+          ) : (<span className="blank-span"></span>)
+          }
           <p>
             <strong>League/Group:</strong> {player.player_group}
           </p>
