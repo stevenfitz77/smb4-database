@@ -64,7 +64,7 @@ function PitchersTable({ players, sortBy, order, onSort }) {
               <td>{player.player_group}</td>
               <td>
                 {player.team
-                  ? <Link to={`/teams/${player.team.id}`} class="table-team-link">{player.team.name}</Link>
+                  ? <Link to={`/teams/${player.team.id}`} className="table-team-link">{player.team.name}</Link>
                   : <span className="free-agent">FA</span>}
               </td>
               <td>{player.age}</td>
