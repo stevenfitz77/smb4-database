@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getPlayers } from '../api/client';
 import BattersTable from '../components/BattersTable';
 import PitchersTable from '../components/PitchersTable';
-import { POSITIONS, CHEMISTRY_TYPES, RATINGS } from '../constants';
+import { POSITIONS, CHEMISTRY_TYPES, RATINGS, PLAYER_GROUPS } from '../constants';
 import { Link } from 'react-router-dom';
 import './PlayersPage.css';
 import { sortPlayers } from '../utils/sortPlayers';
@@ -169,6 +169,12 @@ function PlayersPage() {
           options={RATINGS}
           selected={selectedRatings}
           onChange={setSelectedRatings}
+        />
+        <ToggleGroup
+          label="League/Group"
+          options={PLAYER_GROUPS}
+          selected={selectedPlayerGroups}
+          onChange={setSelectedPlayerGroups}
         />
       </div>
 

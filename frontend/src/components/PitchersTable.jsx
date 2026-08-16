@@ -27,6 +27,7 @@ function PitchersTable({ players, sortBy, order, onSort }) {
             <th></th>
             <SortableTh label="Name" field="name" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Pos" field="primary_position" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="League" field="player_group" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Team" field="team" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Age" field="age" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Throws" field="throw_hand" sortBy={sortBy} order={order} onSort={onSort} />
@@ -59,6 +60,7 @@ function PitchersTable({ players, sortBy, order, onSort }) {
                 </Link>
               </td>
               <td>{player.primary_position}</td>
+              <td>{player.player_group}</td>
               <td>
                 {player.team
                   ? <Link to={`/teams/${player.team.id}`} class="table-team-link">{player.team.name}</Link>

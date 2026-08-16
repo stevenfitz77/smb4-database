@@ -77,6 +77,10 @@ function PlayerDetailPage() {
           </p>
 
           <p>
+            <strong>League/Group:</strong> {player.player_group}
+          </p>
+
+          <p>
             <strong>Team:</strong>{' '}
             {player.team ? (
               <Link to={`/teams/${player.team.id}`} className="player-detail-team-link">{player.team.name}</Link>

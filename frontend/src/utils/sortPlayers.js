@@ -8,6 +8,8 @@ export function sortPlayers(players, sortBy, order) {
     switch (sortBy) {
       case 'name':
         return `${p.last_name} ${p.first_name}`.toLowerCase();
+      case 'player_group':
+        return p.player_group.toLowerCase();
       case 'team':
         return p.team ? p.team.name.toLowerCase() : '';
       case 'rating':
