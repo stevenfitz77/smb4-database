@@ -11,14 +11,14 @@
 
 .players-table th {
   text-align: left;
-  padding: 0.6rem 0.75rem;
+  padding: 0.6rem 0.5rem;
   border-bottom: 2px solid #1a1a2e;
   color: #fbfbfd;
   white-space: nowrap;
 }
 
 .players-table td {
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.5rem;
   border-bottom: 1px solid #e0e0e0;
   white-space: nowrap;
 }
@@ -136,4 +136,22 @@
   width: 32px;
   height: 32px;
   flex-shrink: 0;
+}
+
+/*Compress for standard laptop screens*/
+@media (max-width: 1400px) {
+  .players-table {
+    font-size: 0.8rem;
+  }
+  .players-table th, .players-table td {
+    padding: 0.4rem 0.35rem;
+  }
+  .table-stat-track {
+    width: 40px;
+    height: 16px;
+  }
+  .chemistry-icon {
+    width: 18px;
+    height: 18px;
+  }
 }
