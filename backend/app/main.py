@@ -7,7 +7,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://supermegadb.com", "https://supermegadb.com", "http://localhost:5173", "https://smb4-database.vercel.app"],
+    allow_origins=["https://supermegadb.com", "https://www.supermegadb.com", "http://localhost:5173", "https://smb4-database.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
