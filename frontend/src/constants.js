@@ -145,4 +145,4 @@ export const TRAIT_DESCRIPTIONS = {
   "RBI Zero": "",
 };
 
-export const SITE_NOTICE = "Content may take a minute to load after site inactivity | In Progress: Legends & SMNL Customs upload"
+export const SITE_NOTICE = "Content may take a minute to load after site inactivity | In Progress: Legends League & Arm Slot data uploads"
