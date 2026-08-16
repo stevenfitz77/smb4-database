@@ -46,7 +46,13 @@ function PlayerDetailPage() {
 
   return (
     <div className="player-detail-page">
-      <Link to="/" className="back-link">&larr; All Players</Link>
+      <Link
+        to="/"
+        state={{ view: isPitcher ? 'pitchers' : 'batters' }}
+        className="back-link"
+      >
+        &larr; {isPitcher ? 'All Pitchers' : 'All Position Players'}
+      </Link>
 
       {import.meta.env.DEV && (
         <Link to={`/admin/players/${player.id}/edit`} className="temp-admin-button">Edit Player (TEMP)</Link>

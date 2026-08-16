@@ -3,7 +3,7 @@ import { getPlayers } from '../api/client';
 import BattersTable from '../components/BattersTable';
 import PitchersTable from '../components/PitchersTable';
 import { POSITIONS, CHEMISTRY_TYPES, RATINGS, PLAYER_GROUPS } from '../constants';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './PlayersPage.css';
 import { sortPlayers } from '../utils/sortPlayers';
 import { isPitcher, isTwoWay } from '../utils/playerRoles';
@@ -34,8 +34,9 @@ function ToggleGroup({ label, options, selected, onChange }) {
 }
 
 function PlayersPage() {
+  const location = useLocation();
   const [players, setPlayers] = useState([]);
-  const [view, setView] = useState('batters');
+  const [view, setView] = useState(location.state?.view ?? 'batters');
   const [search, setSearch] = useState('');
   const [selectedPositions, setSelectedPositions] = useState(new Set());
   const [selectedChemistryTypes, setSelectedChemistryTypes] = useState(new Set());

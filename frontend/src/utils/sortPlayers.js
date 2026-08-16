@@ -2,7 +2,7 @@ import { RATINGS, POSITIONS, POSITION_SORT_ORDER } from '../constants';
 
 export function sortPlayers(players, sortBy, order) {
   if (!sortBy) return players;
-  const dir = order === 'desc' ? -1 : 1;
+  const dir = order === 'asc' ? -1 : 1;
 
   const getValue = (p) => {
     switch (sortBy) {
