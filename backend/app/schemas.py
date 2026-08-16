@@ -52,6 +52,8 @@ VALID_RATINGS = ["D-", "D", "D+", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "
 VALID_THROW_HANDS = {"R", "L"}
 VALID_BAT_HANDS = {"R", "L", "S"}
 
+VALID_PLAYER_GROUPS = {"Standard", "Legends", "SMNL Customs"}
+
 # ---------- Team ----------
 
 class TeamBase(BaseModel):
@@ -94,6 +96,7 @@ class PlayerBase(BaseModel):
     traits: Optional[List[str]] = None
     rating: str
     team_id: Optional[int] = None
+    player_group: str = "Standard"
 
     primary_position: str
     secondary_positions: Optional[List[str]] = None
@@ -195,6 +198,13 @@ class PlayerBase(BaseModel):
     def valid_age(cls, value):
         if not (18 <= value <= 49):
             raise ValueError("age must be between 18 and 49")
+        return value
+
+    @field_validator("player_group")
+    @classmethod
+    def validate_player_group(cls, value):
+        if value not in VALID_PLAYER_GROUPS:
+            raise ValueError(f"Valid player groups: {VALID_PLAYER_GROUPS}")
         return value
     
     # ---- Model Validators: pitcher vs position player ----

@@ -34,6 +34,7 @@ def get_players(
     position: Optional[str] = None,
     chemistry_type: Optional[str] = None,
     rating: Optional[str] = None,
+    player_group: Optional[str] = None,
     sort_by: Optional[str] = None,
     order: Optional[str] = "desc",
     db: Session = Depends(get_db)
@@ -54,7 +55,8 @@ def get_players(
         query = query.filter(models.Player.chemistry_type == chemistry_type)
     if rating is not None:
         query = query.filter(models.Player.rating == rating)
-
+    if player_group is not None:
+        query = query.filter(models.Player.player_group == player_group)
     if sort_by in SORTABLE_FIELDS:
         column = SORTABLE_FIELDS[sort_by]
         query = query.order_by(desc(column) if order == "desc" else asc(column))

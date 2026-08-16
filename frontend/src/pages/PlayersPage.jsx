@@ -40,6 +40,7 @@ function PlayersPage() {
   const [selectedPositions, setSelectedPositions] = useState(new Set());
   const [selectedChemistryTypes, setSelectedChemistryTypes] = useState(new Set());
   const [selectedRatings, setSelectedRatings] = useState(new Set());
+  const [selectedPlayerGroups, setSelectedPlayerGroups] = useState(new Set(['Standard']));
   const [sortBy, setSortBy] = useState('');
   const [order, setOrder] = useState('asc');
   const [loading, setLoading] = useState(true);
@@ -75,6 +76,7 @@ function PlayersPage() {
     setSelectedPositions(new Set());
     setSelectedChemistryTypes(new Set());
     setSelectedRatings(new Set());
+    setSelectedPlayerGroups(new Set(['Standard']));
     setSearch('');
   };
 
@@ -82,7 +84,8 @@ function PlayersPage() {
     selectedPositions.size > 0 ||
     selectedChemistryTypes.size > 0 ||
     selectedRatings.size > 0 ||
-    search.length > 0;
+    search.length > 0 ||
+    !(selectedPlayerGroups.size === 1 && selectedPlayerGroups.has('Standard'));
 
   const filteredPlayers = players.filter((player) => {
     const viewMatch = view === 'pitchers' ? isPitcher(player) : (!isPitcher(player) || isTwoWay(player));

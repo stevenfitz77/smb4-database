@@ -65,4 +65,6 @@ export const POSITION_SORT_ORDER = [
   "C", "1B", "2B", "3B", "SS", "IF", "LF", "CF", "RF", "OF"
 ];
 
-export const SITE_NOTICE = "Content may take a minute to load after site inactivity | Stadium photos not yet uploaded - Working on it"
+export const PLAYER_GROUPS = ['Standard', 'Legends', 'SMNL Customs'];
+
+export const SITE_NOTICE = "Content may take a minute to load after site inactivity"
