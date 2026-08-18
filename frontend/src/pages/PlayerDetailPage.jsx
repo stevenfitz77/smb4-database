@@ -68,7 +68,7 @@ function PlayerDetailPage() {
       <div className="player-detail-header">
         <div className="player-detail-image">
           {player.card_photo_url ? (
-            <img src={player.card_photo_url} alt={`${player.first_name} ${player.last_name}`} />
+            <img src={fullHeadshotUrl} alt={`${player.first_name} ${player.last_name}`} />
           ) : (
             <div className="player-card-placeholder">No Photo</div>
           )}

@@ -18,8 +18,6 @@ function StatCell({ value }) {
   );
 }
 
-const thumbnailPhotoUrl = player.card_photo_url?.replace('/player-cards', '/player-cards/thumb').replace('.png', '.webp');
-
 function BattersTable({ players, sortBy, order, onSort }) {
   return (
     <div className="table-scroll-wrapper">
