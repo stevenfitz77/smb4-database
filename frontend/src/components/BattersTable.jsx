@@ -18,6 +18,8 @@ function StatCell({ value }) {
   );
 }
 
+const thumbnailPhotoUrl = player.card_photo_url?.replace('/player-cards', '/player-cards/thumb').replace('.png', '.webp');
+
 function BattersTable({ players, sortBy, order, onSort }) {
   return (
     <div className="table-scroll-wrapper">
@@ -45,12 +47,14 @@ function BattersTable({ players, sortBy, order, onSort }) {
           </tr>
         </thead>
         <tbody>
-          {players.map((player) => (
-            <tr key={player.id}>
-              <td className="table-photo-cell">
-                {player.card_photo_url ? (
-                  <img src={player.card_photo_url} alt="" className="table-photo" />
-                ) : (
+          {players.map((player) => {
+            const thumbnailPhotoUrl = player.card_photo_url?.replace('/player-cards', '/player-cards/thumb').replace('.png', '.webp');
+            return (
+              <tr key={player.id}>
+                <td className="table-photo-cell">
+                  {thumbnailPhotoUrl ? (
+                    <img src={thumbnailPhotoUrl} alt="" className="table-photo" />
+                  ) : (
                   <div className="table-photo-placeholder" />
                 )}
               </td>
@@ -88,7 +92,7 @@ function BattersTable({ players, sortBy, order, onSort }) {
                   : '—'}
               </td>
             </tr>
-          ))}
+          )})}
         </tbody>
       </table>
     </div>

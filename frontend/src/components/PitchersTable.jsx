@@ -46,17 +46,19 @@ function PitchersTable({ players, sortBy, order, onSort }) {
           </tr>
         </thead>
         <tbody>
-          {players.map((player) => (
-            <tr key={player.id}>
-              <td className="table-photo-cell">
-                {player.card_photo_url ? (
-                  <img src={player.card_photo_url} alt="" className="table-photo" />
-                ) : (
-                  <div className="table-photo-placeholder" />
-                )}
-              </td>
-              <td>
-                <Link to={`/players/${player.id}`} className="table-name-link">
+          {players.map((player) => {
+            const thumbnailPhotoUrl = player.card_photo_url?.replace('/player-cards', '/player-cards/thumb').replace('.png', '.webp');
+            return (
+              <tr key={player.id}>
+                <td className="table-photo-cell">
+                  {thumbnailPhotoUrl ? (
+                    <img src={thumbnailPhotoUrl} alt="" className="table-photo" />
+                  ) : (
+                    <div className="table-photo-placeholder" />
+                  )}
+                </td>
+                <td>
+                  <Link to={`/players/${player.id}`} className="table-name-link">
                   {player.first_name} {player.last_name}
                 </Link>
               </td>
@@ -90,7 +92,7 @@ function PitchersTable({ players, sortBy, order, onSort }) {
                   : '—'}
               </td>
             </tr>
-          ))}
+          )})}
         </tbody>
       </table>
     </div>

@@ -44,6 +44,8 @@ function PlayerDetailPage() {
 
   const isPitcher = PITCHER_POSITIONS.has(player.primary_position);
 
+  const fullHeadshotUrl = player.card_photo_url?.replace('/player-cards', '/player-cards/full').replace('.png', '.webp');
+
   return (
     <div className="player-detail-page">
       <Link
