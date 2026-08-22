@@ -1,6 +1,7 @@
 .app {
   min-height: 100vh;
-  background-color: #373b5b;
+  /*background-color: #373b5b;*/
+  background-image: linear-gradient(to bottom right, #1a1a2e, #373b5b);
 }
 
 .navbar {
