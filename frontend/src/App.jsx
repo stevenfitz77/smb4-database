@@ -38,8 +38,8 @@ function App() {
         </Routes>
       </main>
 
-      <Analytics /> {/* vercel analytics */}
       <BugReportButton />
+      <Analytics /> {/* vercel analytics */}
     
     </div>
   );

@@ -20,13 +20,8 @@
   justify-self: start;
 }
 
-.nav-logo-center {
-  justify-self: center;
-}
-
 .nav-logo {
   height: 40px;
-  display: block;
   cursor: default;
 }
 
