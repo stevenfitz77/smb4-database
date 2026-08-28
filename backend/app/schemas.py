@@ -142,7 +142,7 @@ class PlayerBase(BaseModel):
         if len(value) > 1:
             raise ValueError("Players can only have one secondary position. 1B/OF and IF/OF each count as one.")
         for pos in value:
-            if pos not in VALID_POSITIONS:
+            if pos not in VALID_SECONDARY_POSITIONS:
                 raise ValueError(f'Invalid secondary position: {pos}')
         return value
     
