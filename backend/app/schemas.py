@@ -135,11 +135,11 @@ class PlayerBase(BaseModel):
     def validate_secondary_positions(cls, value):
         if value is None:
             return value
-        if len(value) > 2:
-            raise ValueError("A player can have at most 2 secondary positions")
+        if len(value) > 1:
+            raise ValueError("Players can only have one secondary position. 1B/OF and IF/OF each count as one.")
         for pos in value:
             if pos not in VALID_POSITIONS:
-                raise ValueError(f"Valid Secondary Positions: {VALID_POSITIONS}")
+                raise ValueError(f'Invalid secondary position: {pos}')
         return value
     
     @field_validator("pitch_arsenal")
