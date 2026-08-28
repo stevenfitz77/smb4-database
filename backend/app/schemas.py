@@ -103,7 +103,7 @@ class PlayerBase(BaseModel):
     player_group: str = "Standard"
 
     primary_position: str
-    secondary_position: Optional[Str] = None
+    secondary_position: Optional[str] = None
     chemistry_type: str
 
     power: Optional[int] = None
@@ -224,7 +224,7 @@ class PlayerBase(BaseModel):
                 raise ValueError(f"Pitchers must have the following fields: {missing}")
             if self.arm is not None:
                 raise ValueError("Pitchers should not have an 'arm' stat")
-            if self.secondary_positions:
+            if self.secondary_position:
                 raise ValueError("Pitchers use the Two-Way trait for secondary positions")
         else:
             if self.arm is None:
