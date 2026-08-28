@@ -103,7 +103,7 @@ class PlayerBase(BaseModel):
     player_group: str = "Standard"
 
     primary_position: str
-    secondary_positions: Optional[List[str]] = None
+    secondary_position: Optional[Str] = None
     chemistry_type: str
 
     power: Optional[int] = None
@@ -134,9 +134,9 @@ class PlayerBase(BaseModel):
             raise ValueError("Valid Primary Positions: SP, RP, SP/RP, CP, C, 1B, 2B, 3B, SS, LF, CF, RF")
         return value
     
-    @field_validator("secondary_positions")
+    @field_validator("secondary_position")
     @classmethod
-    def validate_secondary_positions(cls, value):
+    def validate_secondary_position(cls, value):
         if value is None:
             return value
         if len(value) > 1:
