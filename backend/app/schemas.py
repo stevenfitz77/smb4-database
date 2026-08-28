@@ -5,6 +5,10 @@ VALID_POSITIONS = {
     "SP", "RP", "SP/RP", "CP", "C", "1B", "2B", "3B", "SS", "IF", "LF", "CF", "RF", "OF"
 }
 
+VALID_SECONDARY_POSITIONS = {
+  'C', '1B', '2B', '3B', 'SS', 'IF', 'LF', 'CF', 'RF', 'OF', '1B/OF', 'IF/OF'
+}
+
 PITCHER_POSITIONS = {"SP", "RP", "SP/RP", "CP"}
 VALID_PITCHES = {"4F", "2F", "CF", "CH", "SL", "CB", "SB", "FK"}
 
