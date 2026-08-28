@@ -30,7 +30,7 @@ class Player(Base):
     player_group = Column(String, nullable=False, server_default="Standard")
 
     primary_position = Column(String, nullable=False)
-    secondary_positions = Column(JSON, nullable=True)  # list of secondary positions
+    secondary_position = Column(String, nullable=True)
     chemistry_type = Column(String, nullable=False)
 
     # universal stats
