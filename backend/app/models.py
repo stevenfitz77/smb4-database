@@ -27,7 +27,7 @@ class Player(Base):
     rating = Column(String, nullable=False)
     team_id = Column(Integer, ForeignKey("teams.id"), nullable=True)  # nullable = free agents allowed
     team = relationship("Team", back_populates="players")
-    player_group = Column(String, nullable=False, server_default="Standard")
+    league = Column(String, nullable=False, server_default="Standard")
 
     primary_position = Column(String, nullable=False)
     secondary_position = Column(String, nullable=True)
