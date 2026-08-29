@@ -100,7 +100,7 @@ class PlayerBase(BaseModel):
     traits: Optional[List[str]] = None
     rating: str
     team_id: Optional[int] = None
-    player_group: str = "Standard"
+    league: str = "Standard"
 
     primary_position: str
     secondary_position: Optional[str] = None
@@ -202,11 +202,11 @@ class PlayerBase(BaseModel):
             raise ValueError("age must be between 18 and 49")
         return value
 
-    @field_validator("player_group")
+    @field_validator("league")
     @classmethod
-    def validate_player_group(cls, value):
-        if value not in VALID_PLAYER_GROUPS:
-            raise ValueError(f"Valid player groups: {VALID_PLAYER_GROUPS}")
+    def validate_league(cls, value):
+        if value not in VALID_LEAGUES:
+            raise ValueError(f"Valid leagues: {VALID_LEAGUES}")
         return value
     
     # ---- Model Validators: pitcher vs position player ----
