@@ -63,7 +63,7 @@ function BattersTable({ players, sortBy, order, onSort }) {
               </td>
               <td>{player.primary_position}</td>
               <td>{player.secondary_positions?.join('/') ?? '—'}</td>
-              <td>{player.player_group}</td>
+              <td>{player.league}</td>
               <td>
                 {player.team
                   ? <Link to={`/teams/${player.team.id}`} className="table-team-link">{player.team.name}</Link>
