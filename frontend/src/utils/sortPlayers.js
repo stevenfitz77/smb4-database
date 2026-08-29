@@ -1,4 +1,4 @@
-import { RATINGS, POSITIONS, POSITION_SORT_ORDER } from '../constants';
+import { RATINGS, POSITIONS, POSITION_SORT_ORDER, VALID_LEAGUES } from '../constants';
 
 export function sortPlayers(players, sortBy, order) {
   if (!sortBy) return players;
@@ -8,8 +8,8 @@ export function sortPlayers(players, sortBy, order) {
     switch (sortBy) {
       case 'name':
         return `${p.last_name} ${p.first_name}`.toLowerCase();
-      case 'player_group':
-        return p.player_group.toLowerCase();
+      case 'league':
+        return VALID_LEAGUES.indexOf(p.league);
       case 'team':
         return p.team ? p.team.name.toLowerCase() : '';
       case 'rating':
