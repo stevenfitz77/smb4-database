@@ -56,7 +56,7 @@ VALID_RATINGS = ["D-", "D", "D+", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "
 VALID_THROW_HANDS = {"R", "L"}
 VALID_BAT_HANDS = {"R", "L", "S"}
 
-VALID_PLAYER_GROUPS = {"Standard", "Legends", "SMNL Customs"}
+VALID_LEAGUES = {"Standard", "Legends", "SMNL Customs"}
 
 # ---------- Team ----------
 
