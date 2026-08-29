@@ -28,7 +28,7 @@ function BattersTable({ players, sortBy, order, onSort }) {
             <SortableTh label="Name" field="name" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Pos" field="primary_position" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Sec. Pos" field="secondary_positions" sortBy={sortBy} order={order} onSort={onSort}/>
-            <SortableTh label="League" field="player_group" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="League" field="league" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Team" field="team" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Age" field="age" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Bats" field="bat_hand" sortBy={sortBy} order={order} onSort={onSort} />
