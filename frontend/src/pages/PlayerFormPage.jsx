@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getPlayer, createPlayer, updatePlayer, getTeams } from '../api/client';
-import { POSITIONS, PITCHER_POSITIONS, CHEMISTRY_TYPES, PITCH_TYPES, TRAIT_CHEMISTRY, RATINGS, THROW_HANDS, BAT_HANDS, PLAYER_GROUPS } from '../constants';
+import { POSITIONS, PITCHER_POSITIONS, CHEMISTRY_TYPES, PITCH_TYPES, TRAIT_CHEMISTRY, RATINGS, THROW_HANDS, BAT_HANDS, VALID_LEAGUES } from '../constants';
 import './PlayerFormPage.css';
 
 const emptyForm = {
   first_name: '', last_name: '', jersey_number: '', card_photo_url: '',
   team_id: '', primary_position: '', secondary_positions: [], chemistry_type: '', rating: '',
   traits: [], power: '', contact: '', speed: '', fielding: '', arm: '',
-  velocity: '', junk: '', accuracy: '', pitch_arsenal: [], age: '', throw_hand: '', bat_hand: '', player_group: 'Standard',
+  velocity: '', junk: '', accuracy: '', pitch_arsenal: [], age: '', throw_hand: '', bat_hand: '', league: 'Standard',
 };
 
 function PlayerFormPage() {
@@ -48,7 +48,7 @@ function PlayerFormPage() {
         arm: player.arm ?? '', velocity: player.velocity ?? '',
         junk: player.junk ?? '', accuracy: player.accuracy ?? '',
         pitch_arsenal: player.pitch_arsenal ?? [],
-        player_group: player.player_group ?? 'Standard',
+        league: player.league ?? 'Standard',
       });
     }).finally(() => setLoading(false));
   }, [playerId, isEditMode]);
@@ -101,7 +101,7 @@ function PlayerFormPage() {
       junk: isPitcher ? toInt(formData.junk) : null,
       accuracy: isPitcher ? toInt(formData.accuracy) : null,
       pitch_arsenal: isPitcher && formData.pitch_arsenal.length ? formData.pitch_arsenal : null,
-      player_group: formData.player_group,
+      league: formData.league,
     };
 
     try {
@@ -210,8 +210,8 @@ function PlayerFormPage() {
           </label>
           <label>
             League/Group
-            <select name="player_group" value={formData.player_group} onChange={handleChange}>
-              {PLAYER_GROUPS.map((g) => <option key={g} value={g}>{g}</option>)}
+            <select name="league" value={formData.league} onChange={handleChange}>
+              {VALID_LEAGUES.map((g) => <option key={g} value={g}>{g}</option>)}
             </select>
           </label>
         </div>
