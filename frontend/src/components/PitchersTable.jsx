@@ -27,7 +27,7 @@ function PitchersTable({ players, sortBy, order, onSort }) {
             <th></th>
             <SortableTh label="Name" field="name" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Pos" field="primary_position" sortBy={sortBy} order={order} onSort={onSort} />
-            <SortableTh label="League" field="player_group" sortBy={sortBy} order={order} onSort={onSort} />
+            <SortableTh label="League" field="league" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Team" field="team" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Age" field="age" sortBy={sortBy} order={order} onSort={onSort} />
             <SortableTh label="Throws" field="throw_hand" sortBy={sortBy} order={order} onSort={onSort} />
