@@ -90,7 +90,7 @@ function PlayerDetailPage() {
           ) : (<span className="blank-span"></span>)
           }
           <p>
-            <strong>League/Group:</strong> {player.player_group}
+            <strong>League:</strong> {player.league}
           </p>
 
           <p>
