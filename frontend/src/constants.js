@@ -65,7 +65,7 @@ export const POSITION_SORT_ORDER = [
   "C", "1B", "2B", "3B", "SS", "IF", "LF", "CF", "RF", "OF"
 ];
 
-export const PLAYER_GROUPS = ['Standard', 'Legends', 'SMNL Customs'];
+export const VALID_LEAGUES = ['Standard', 'Legends', 'SMNL Customs'];
 
 export const TRAIT_DESCRIPTIONS = {
   "Elite 2F": "",
